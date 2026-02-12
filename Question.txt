@@ -1,0 +1,191 @@
+# 🧪 SDP Open Book Examination
+
+## Project Option: SaaS Subscription Management UI
+
+**Duration: 5 Hours (8:30 AM – 1:30 PM Development)**
+**Evaluation: 2:00 – 4:00 PM (Demo + GitHub Review)**
+**Difficulty Level: Medium → Moderate Advanced (MCA Level)**
+
+---
+
+# 📌 Problem Statement
+
+You are required to design and implement a **SaaS Subscription Management Frontend Application** using **React (Vite)** that simulates subscription plan selection, authentication flow, billing submission, and secure token handling.
+
+The application must follow modern frontend architectural patterns covered in the SDP syllabus.
+
+This is a **frontend-only project**. Backend will be mocked using `json-server` or `MSW`.
+
+---
+
+# 🎯 Functional Requirements
+
+## 1️⃣ Authentication Module (Protected Routing Required)
+
+### You must implement:
+
+* Login page
+* Fake authentication (mock API)
+* Token generation (mock JWT string)
+* Store token securely (simulation)
+* Redirect authenticated users to dashboard
+* Prevent unauthenticated access to protected routes
+
+### Technical Requirements:
+
+* Use **React Router v6**
+* Create a `ProtectedRoute` wrapper
+* Use **Context API** for auth state
+* Simulate token expiry (optional bonus)
+
+---
+
+## 2️⃣ Plan Selection Page
+
+### UI Requirements:
+
+Display at least **3 SaaS subscription plans**:
+
+* Basic
+* Pro
+* Enterprise
+
+Each plan must show:
+
+* Price
+* Features list
+* CTA button ("Select Plan")
+
+### Technical Requirements:
+
+* Fetch plans using **React Query**
+* Mock API endpoint `/plans`
+* Loading & error states required
+* Selected plan should be stored in global state (Context)
+
+---
+
+## 3️⃣ Billing Form (React Hook Form + Yup)
+
+After selecting a plan, user must fill billing details:
+
+### Required Fields:
+
+* Full Name
+* Email
+* Card Number
+* Expiry Date
+* CVV
+* Billing Address
+
+### Validation:
+
+* Use **React Hook Form**
+* Use **Yup schema validation**
+* Show proper error messages
+* Disable submit until valid
+
+On submit:
+
+* Simulate payment success response
+* Redirect to confirmation page
+
+---
+
+## 4️⃣ Subscription Dashboard (Protected)
+
+After successful billing:
+
+* Show selected plan details
+* Show subscription status (Active)
+* Option to "Upgrade Plan"
+* Option to "Logout"
+
+---
+
+# 🧠 Architectural Requirements (Mandatory)
+
+## 1️⃣ Context API Usage
+
+Must create:
+
+* `AuthContext`
+* `SubscriptionContext`
+
+---
+
+## 2️⃣ Custom Hooks
+
+Create at least:
+
+* `useAuth()`
+* `useSubscription()`
+
+Bonus:
+
+* `useTokenExpiry()`
+
+---
+
+## 3️⃣ React Query Usage
+
+Must:
+
+* Use `useQuery()` for plans
+* Use `useMutation()` for billing submission
+* Configure QueryClient properly
+
+---
+
+## 4️⃣ Routing Structure
+
+Example Structure:
+
+```
+/
+|-- /login
+|-- /plans
+|-- /billing
+|-- /dashboard
+```
+
+Use nested routes if needed.
+
+---
+# 🕒 Suggested 5-Hour Timeline
+
+| Time        | Task                          |
+| ----------- | ----------------------------- |
+| 0:00 – 0:30 | Planning + Setup              |
+| 0:30 – 1:30 | Authentication + Routing      |
+| 1:30 – 2:30 | Plan Selection (React Query)  |
+| 2:30 – 3:30 | Billing Form + Validation     |
+| 3:30 – 4:15 | Dashboard + State Handling    |
+| 4:15 – 4:45 | Optimization + Token Security |
+| 4:45 – 5:00 | Testing + GitHub Cleanup      |
+
+---
+# 🎓 What This Exam Tests
+
+* SPA architecture understanding
+* State vs server state difference
+* Authentication patterns
+* Secure token handling reasoning
+* Performance awareness
+* Clean code & folder design
+* Team collaboration via GitHub
+
+---
+
+# 🗣 Presentation (2–4 PM)
+
+Each team must:
+
+1. Explain folder architecture
+2. Explain auth token storage decision
+3. Demonstrate protected route logic
+4. Show one performance optimization
+5. Show one test running
+6. Explain security considerations
+
+---
