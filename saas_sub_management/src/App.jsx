@@ -5,9 +5,15 @@ import Register from "./pages/Register";
 import Plans from "./pages/Plans";
 import Billing from "./pages/Billing";
 import Dashboard from "./pages/Dashboard";
+import VerifyOTP from "./pages/VerifyOTP";
+
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
+
+
 
 function App() {
   const location = useLocation();
@@ -60,6 +66,26 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/verify-otp" element={<VerifyOTP />} />
+
+        <Route
+          path="/about"
+          element={
+            <ProtectedRoute>
+              <About />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/contact"
+          element={
+            <ProtectedRoute>
+              <Contact />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
     </div>
   );
