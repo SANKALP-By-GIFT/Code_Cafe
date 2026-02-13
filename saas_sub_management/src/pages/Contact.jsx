@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import axios from "axios";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +21,16 @@ const Contact = () => {
     setStatus("");
 
     try {
-      await axios.post("http://localhost:5000/contacts", formData);
+      await emailjs.send(
+        "service_ltshinm",     // your service id
+        "template_4217zzy", // replace this
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        "wCNyXQw-8vmyqhi6y"    // your public key
+      );
 
       setStatus("Message sent successfully ✅");
       setFormData({ name: "", email: "", message: "" });
@@ -34,9 +43,8 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-[#F4F1EC]">
-      
       <div className="w-full max-w-xl bg-white p-8 md:p-10 rounded-2xl shadow-xl">
-        
+
         <h1 className="text-3xl font-bold text-center mb-8 text-[#3D5A80]">
           Contact Us
         </h1>
@@ -78,8 +86,7 @@ const Contact = () => {
             disabled={loading}
             className="w-full py-3 rounded-lg text-white font-semibold transition-all duration-300 hover:scale-105"
             style={{
-              background:
-                "linear-gradient(135deg, #3D5A80, #2A9D8F)",
+              background: "linear-gradient(135deg, #3D5A80, #2A9D8F)",
             }}
           >
             {loading ? "Sending..." : "Send Message"}

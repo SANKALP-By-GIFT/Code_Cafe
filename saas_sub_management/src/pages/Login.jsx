@@ -12,6 +12,8 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
+
     try {
       login(email, password);
       navigate("/plans");
@@ -21,51 +23,47 @@ const Login = () => {
   };
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen px-6
-                    bg-gradient-to-br from-[#3D5A80] via-[#2A9D8F] to-[#E9C46A] overflow-hidden">
-
-      {/* Floating background glow */}
-      <div className="absolute top-[-80px] left-[-80px] w-72 h-72 bg-[#E9C46A]/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-[-80px] right-[-80px] w-80 h-80 bg-[#2A9D8F]/30 rounded-full blur-3xl"></div>
+    <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-[#F4F1EC]">
 
       {/* Card */}
-      <div className="relative w-full max-w-md
-                      bg-white/90 backdrop-blur-xl
-                      shadow-[0_25px_60px_rgba(0,0,0,0.15)]
-                      rounded-3xl p-10">
+      <div
+        className="w-full max-w-sm sm:max-w-md
+                   bg-white rounded-2xl shadow-xl
+                   border border-[#E9C46A]/40
+                   p-6 sm:p-8"
+      >
+        {/* Gold Accent Line */}
+        <div className="h-1 w-14 bg-[#E9C46A] rounded-full mx-auto mb-5"></div>
 
-        {/* Premium top accent */}
-        <div className="h-1 w-20 bg-[#E9C46A] rounded-full mx-auto mb-6"></div>
-
-        <h2 className="text-3xl font-bold text-center text-[#2B2D42] mb-2">
+        <h2 className="text-2xl font-bold text-center text-[#3D5A80] mb-2">
           Welcome Back
         </h2>
 
-        <p className="text-center text-[#6B7280] mb-8">
+        <p className="text-center text-sm text-[#2B2D42]/70 mb-6">
           Continue your learning journey
         </p>
 
         {error && (
-          <p className="text-red-500 text-center mb-4 text-sm">
+          <p className="text-red-500 text-center text-sm mb-4">
             {error}
           </p>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
 
           {/* Email */}
           <div>
-            <label className="block mb-1 text-[#6B7280] text-sm">
+            <label className="block mb-1 text-xs text-[#2B2D42]/70">
               Email Address
             </label>
             <input
               type="email"
               required
               autoComplete="email"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300
-                         text-[#2B2D42] placeholder-[#6B7280]
-                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]
-                         transition duration-300 hover:border-[#2A9D8F]"
+              className="w-full px-3 py-2 rounded-lg border border-gray-300
+                         text-sm text-[#2B2D42]
+                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]/60
+                         transition duration-300"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -73,17 +71,17 @@ const Login = () => {
 
           {/* Password */}
           <div>
-            <label className="block mb-1 text-[#6B7280] text-sm">
+            <label className="block mb-1 text-xs text-[#2B2D42]/70">
               Password
             </label>
             <input
               type="password"
               required
               autoComplete="current-password"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300
-                         text-[#2B2D42]
-                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]
-                         transition duration-300 hover:border-[#2A9D8F]"
+              className="w-full px-3 py-2 rounded-lg border border-gray-300
+                         text-sm text-[#2B2D42]
+                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]/60
+                         transition duration-300"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -92,18 +90,17 @@ const Login = () => {
           {/* Login Button */}
           <button
             type="submit"
-            className="w-full py-3 rounded-xl font-semibold text-white
+            className="w-full py-2.5 rounded-lg text-sm font-semibold text-white
                        bg-gradient-to-r from-[#3D5A80] to-[#2A9D8F]
                        hover:scale-[1.02] transition-all duration-300
-                       shadow-lg"
+                       shadow-md"
           >
             Login
           </button>
-
         </form>
 
         {/* Register Link */}
-        <p className="text-sm text-[#6B7280] text-center mt-6">
+        <p className="text-xs text-[#2B2D42]/70 text-center mt-5">
           Don't have an account?{" "}
           <Link
             to="/register"
@@ -112,7 +109,6 @@ const Login = () => {
             Create Account
           </Link>
         </p>
-
       </div>
     </div>
   );

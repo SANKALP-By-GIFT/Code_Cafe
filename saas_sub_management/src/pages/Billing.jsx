@@ -34,22 +34,18 @@ const Billing = () => {
   if (!selectedPlan) return null;
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4 py-6
-      bg-gradient-to-br from-[#3D5A80]/80 via-[#2A9D8F]/80 to-[#E9C46A]/80"
-    >
+    <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-[#F4F1EC]">
+
       {/* Main Card */}
-      <div
-        className="w-full max-w-2xl bg-white/90 backdrop-blur-md
-        rounded-xl shadow-lg grid md:grid-cols-2 overflow-hidden"
-      >
+      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl grid md:grid-cols-2 overflow-hidden border border-[#E9C46A]/40">
+
         {/* LEFT SIDE */}
         <div className="p-5 md:p-6">
 
-          <h2 className="text-xl font-bold text-[#2B2D42]">
+          <h2 className="text-xl font-bold text-[#3D5A80]">
             Secure Checkout
           </h2>
-          <p className="text-xs text-[#6B7280] mb-4">
+          <p className="text-xs text-[#2B2D42]/70 mb-4">
             Complete your learning journey securely.
           </p>
 
@@ -67,7 +63,7 @@ const Billing = () => {
                       : "Card Number"
                   }
                   className="w-full px-3 py-2 rounded-md border border-gray-300
-                  text-sm bg-white/80 focus:ring-2 focus:ring-[#2A9D8F]/60 outline-none"
+                  text-sm bg-white focus:ring-2 focus:ring-[#2A9D8F]/60 outline-none"
                 />
                 <p className="text-red-500 text-[11px] mt-1">
                   {errors[field]?.message}
@@ -80,13 +76,13 @@ const Billing = () => {
                 {...register("expiry")}
                 placeholder="MM/YY"
                 className="px-3 py-2 rounded-md border border-gray-300
-                text-sm bg-white/80 focus:ring-2 focus:ring-[#2A9D8F]/60 outline-none"
+                text-sm bg-white focus:ring-2 focus:ring-[#2A9D8F]/60 outline-none"
               />
               <input
                 {...register("cvv")}
                 placeholder="CVV"
                 className="px-3 py-2 rounded-md border border-gray-300
-                text-sm bg-white/80 focus:ring-2 focus:ring-[#2A9D8F]/60 outline-none"
+                text-sm bg-white focus:ring-2 focus:ring-[#2A9D8F]/60 outline-none"
               />
             </div>
 
@@ -95,7 +91,7 @@ const Billing = () => {
               rows="2"
               placeholder="Billing Address"
               className="w-full px-3 py-2 rounded-md border border-gray-300
-              text-sm bg-white/80 focus:ring-2 focus:ring-[#2A9D8F]/60 outline-none"
+              text-sm bg-white focus:ring-2 focus:ring-[#2A9D8F]/60 outline-none"
             />
             <p className="text-red-500 text-[11px]">
               {errors.address?.message}
@@ -111,7 +107,7 @@ const Billing = () => {
               className={`w-full py-2 rounded-md text-sm font-semibold transition-all
               ${
                 isValid
-                  ? "bg-gradient-to-r from-[#3D5A80]/90 to-[#2A9D8F]/90 text-white hover:scale-[1.02]"
+                  ? "bg-gradient-to-r from-[#3D5A80] to-[#2A9D8F] text-white hover:scale-[1.02]"
                   : "bg-gray-400 text-white cursor-not-allowed"
               }`}
             >
@@ -122,22 +118,20 @@ const Billing = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div
-          className="bg-gradient-to-b from-[#F8F9FB]/70 to-white/70
-          p-5 md:p-6 border-l border-gray-200 flex flex-col"
-        >
-          <h3 className="text-sm font-bold text-[#2B2D42] mb-3">
+        <div className="bg-[#F4F1EC] p-5 md:p-6 border-l border-[#E9C46A]/40 flex flex-col">
+
+          <h3 className="text-sm font-bold text-[#3D5A80] mb-3">
             Order Summary
           </h3>
 
-          <div className="bg-white/80 rounded-lg p-4 border border-[#E9C46A]/30 shadow-sm">
+          <div className="bg-white rounded-lg p-4 border border-[#E9C46A]/40 shadow-sm">
 
-            <p className="text-[11px] text-[#6B7280]">Plan</p>
+            <p className="text-[11px] text-[#2B2D42]/70">Plan</p>
             <h4 className="text-md font-semibold text-[#3D5A80]">
               {selectedPlan.name}
             </h4>
 
-            <div className="mt-3 space-y-2 text-[12px] text-[#6B7280]">
+            <div className="mt-3 space-y-2 text-[12px] text-[#2B2D42]/70">
 
               <div className="flex justify-between">
                 <span>Subscription</span>
@@ -155,23 +149,21 @@ const Billing = () => {
               </div>
             </div>
 
-            {/* Features */}
-            <div className="mt-4 space-y-1 text-[11px] text-[#6B7280]">
+            <div className="mt-4 space-y-1 text-[11px] text-[#2B2D42]/70">
               <p>✔ Unlimited courses</p>
               <p>✔ Certificates</p>
               <p>✔ Priority support</p>
               <p>✔ Cancel anytime</p>
             </div>
 
-            {/* Badge */}
-            <div className="mt-4 text-center text-[11px] bg-[#E9C46A]/20 
+            <div className="mt-4 text-center text-[11px] bg-[#E9C46A]/30 
             text-[#2B2D42] py-1.5 rounded">
               ⭐ Premium Learning Access
             </div>
 
           </div>
 
-          <p className="text-[10px] text-[#6B7280] mt-4">
+          <p className="text-[10px] text-[#2B2D42]/60 mt-4">
             By confirming, you agree to our Terms & Conditions.
           </p>
         </div>

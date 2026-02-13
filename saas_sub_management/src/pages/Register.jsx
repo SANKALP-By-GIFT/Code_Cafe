@@ -24,8 +24,8 @@ const Register = () => {
 
     try {
       setLoading(true);
-      await register(name, email, password); // async call
-      navigate("/verify-otp"); // Go to OTP page
+      await register(name, email, password);
+      navigate("/verify-otp");
     } catch (err) {
       setError(err.message || "Registration failed");
     } finally {
@@ -34,28 +34,23 @@ const Register = () => {
   };
 
   return (
-    <div
-      className="relative flex items-center justify-center min-h-screen px-4
-                 bg-gradient-to-br from-[#3D5A80] via-[#2A9D8F] to-[#E9C46A] overflow-hidden"
-    >
-      {/* Background Glow */}
-      <div className="absolute top-[-60px] left-[-60px] w-52 h-52 bg-[#E9C46A]/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-[-60px] right-[-60px] w-60 h-60 bg-[#2A9D8F]/30 rounded-full blur-3xl"></div>
+    <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-[#F4F1EC]">
 
       {/* Card */}
       <div
-        className="relative w-full max-w-sm sm:max-w-md
-                   bg-white/95 backdrop-blur-xl
-                   shadow-[0_20px_50px_rgba(0,0,0,0.15)]
-                   rounded-2xl p-6 sm:p-8"
+        className="w-full max-w-sm sm:max-w-md
+                   bg-white rounded-2xl shadow-xl
+                   border border-[#E9C46A]/40
+                   p-6 sm:p-8"
       >
+        {/* Gold Accent Line */}
         <div className="h-1 w-14 bg-[#E9C46A] rounded-full mx-auto mb-4"></div>
 
-        <h2 className="text-2xl font-bold text-center text-[#2B2D42] mb-1">
+        <h2 className="text-2xl font-bold text-center text-[#3D5A80] mb-1">
           Create Account
         </h2>
 
-        <p className="text-center text-xs sm:text-sm text-[#6B7280] mb-6">
+        <p className="text-center text-xs sm:text-sm text-[#2B2D42]/70 mb-6">
           Register to receive OTP verification
         </p>
 
@@ -66,9 +61,10 @@ const Register = () => {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
+
           {/* Name */}
           <div>
-            <label className="block mb-1 text-xs text-[#6B7280]">
+            <label className="block mb-1 text-xs text-[#2B2D42]/70">
               Full Name
             </label>
             <input
@@ -77,7 +73,7 @@ const Register = () => {
               autoComplete="name"
               className="w-full px-3 py-2 rounded-lg border border-gray-300
                          text-sm text-[#2B2D42]
-                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]
+                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]/60
                          transition duration-300"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -87,7 +83,7 @@ const Register = () => {
 
           {/* Email */}
           <div>
-            <label className="block mb-1 text-xs text-[#6B7280]">
+            <label className="block mb-1 text-xs text-[#2B2D42]/70">
               Email Address
             </label>
             <input
@@ -96,7 +92,7 @@ const Register = () => {
               autoComplete="email"
               className="w-full px-3 py-2 rounded-lg border border-gray-300
                          text-sm text-[#2B2D42]
-                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]
+                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]/60
                          transition duration-300"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -106,7 +102,7 @@ const Register = () => {
 
           {/* Password */}
           <div>
-            <label className="block mb-1 text-xs text-[#6B7280]">
+            <label className="block mb-1 text-xs text-[#2B2D42]/70">
               Password
             </label>
             <input
@@ -115,7 +111,7 @@ const Register = () => {
               autoComplete="new-password"
               className="w-full px-3 py-2 rounded-lg border border-gray-300
                          text-sm text-[#2B2D42]
-                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]
+                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]/60
                          transition duration-300"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -125,7 +121,7 @@ const Register = () => {
 
           {/* Confirm Password */}
           <div>
-            <label className="block mb-1 text-xs text-[#6B7280]">
+            <label className="block mb-1 text-xs text-[#2B2D42]/70">
               Confirm Password
             </label>
             <input
@@ -134,7 +130,7 @@ const Register = () => {
               autoComplete="new-password"
               className="w-full px-3 py-2 rounded-lg border border-gray-300
                          text-sm text-[#2B2D42]
-                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]
+                         focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]/60
                          transition duration-300"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
@@ -156,7 +152,7 @@ const Register = () => {
         </form>
 
         {/* Login Link */}
-        <p className="text-xs text-[#6B7280] text-center mt-5">
+        <p className="text-xs text-[#2B2D42]/70 text-center mt-5">
           Already have an account?{" "}
           <Link
             to="/login"
