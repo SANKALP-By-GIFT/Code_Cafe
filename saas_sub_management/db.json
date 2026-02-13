@@ -1,0 +1,58 @@
+{
+  "plans": [
+    {
+      "id": 1,
+      "name": "Basic",
+      "price": 499,
+      "features": [
+        "Access to 5 Courses",
+        "Community Support",
+        "Basic Certification"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Pro",
+      "price": 999,
+      "features": [
+        "Unlimited Courses",
+        "Download Materials",
+        "Premium Certification",
+        "Priority Support"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Enterprise",
+      "price": 1999,
+      "features": [
+        "Team Access",
+        "Advanced Analytics",
+        "Dedicated Mentor",
+        "24/7 Support"
+      ]
+    },
+      {
+      "id": 3,
+      "name": "Enterprise",
+      "price": 1999,
+      "features": [
+        "Team Access",
+        "Advanced Analytics",
+        "Dedicated Mentor",
+        "24/7 Support"
+      ]
+    },
+          {
+      "id": 3,
+      "name": "Enterprise",
+      "price": 1999,
+      "features": [
+        "Team Access",
+        "Advanced Analytics",
+        "Dedicated Mentor",
+        "24/7 Support"
+      ]
+    }
+  ]
+}
