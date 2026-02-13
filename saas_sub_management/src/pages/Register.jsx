@@ -11,6 +11,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,56 +23,62 @@ const Register = () => {
     }
 
     try {
-      await register(name, email, password);
-      navigate("/plans");
+      setLoading(true);
+      await register(name, email, password); // async call
+      navigate("/verify-otp"); // Go to OTP page
     } catch (err) {
       setError(err.message || "Registration failed");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div
-      className="relative flex items-center justify-center min-h-screen px-6
+      className="relative flex items-center justify-center min-h-screen px-4
                  bg-gradient-to-br from-[#3D5A80] via-[#2A9D8F] to-[#E9C46A] overflow-hidden"
     >
-      {/* Floating background glows */}
-      <div className="absolute top-[-80px] left-[-80px] w-72 h-72 bg-[#E9C46A]/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-[-80px] right-[-80px] w-80 h-80 bg-[#2A9D8F]/30 rounded-full blur-3xl"></div>
+      {/* Background Glow */}
+      <div className="absolute top-[-60px] left-[-60px] w-52 h-52 bg-[#E9C46A]/30 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-[-60px] right-[-60px] w-60 h-60 bg-[#2A9D8F]/30 rounded-full blur-3xl"></div>
 
       {/* Card */}
       <div
-        className="relative w-full max-w-md md:max-w-3xl
-                   bg-white/90 backdrop-blur-xl
-                   shadow-[0_25px_60px_rgba(0,0,0,0.15)]
-                   rounded-3xl p-10"
+        className="relative w-full max-w-sm sm:max-w-md
+                   bg-white/95 backdrop-blur-xl
+                   shadow-[0_20px_50px_rgba(0,0,0,0.15)]
+                   rounded-2xl p-6 sm:p-8"
       >
-        {/* Premium top accent */}
-        <div className="h-1 w-20 bg-[#E9C46A] rounded-full mx-auto mb-6"></div>
+        <div className="h-1 w-14 bg-[#E9C46A] rounded-full mx-auto mb-4"></div>
 
-        <h2 className="text-3xl font-bold text-center text-[#2B2D42] mb-2">
+        <h2 className="text-2xl font-bold text-center text-[#2B2D42] mb-1">
           Create Account
         </h2>
 
-        <p className="text-center text-[#6B7280] mb-8">
-          Join us and start your learning journey
+        <p className="text-center text-xs sm:text-sm text-[#6B7280] mb-6">
+          Register to receive OTP verification
         </p>
 
         {error && (
-          <p className="text-red-500 text-center mb-4 text-sm">{error}</p>
+          <p className="text-red-500 text-center text-sm mb-4">
+            {error}
+          </p>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <div>
-            <label className="block mb-1 text-[#6B7280] text-sm">Full Name</label>
+            <label className="block mb-1 text-xs text-[#6B7280]">
+              Full Name
+            </label>
             <input
               type="text"
               required
               autoComplete="name"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300
-                         text-[#2B2D42] placeholder-[#6B7280]
+              className="w-full px-3 py-2 rounded-lg border border-gray-300
+                         text-sm text-[#2B2D42]
                          focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]
-                         transition duration-300 hover:border-[#2A9D8F]"
+                         transition duration-300"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Your full name"
@@ -80,15 +87,17 @@ const Register = () => {
 
           {/* Email */}
           <div>
-            <label className="block mb-1 text-[#6B7280] text-sm">Email Address</label>
+            <label className="block mb-1 text-xs text-[#6B7280]">
+              Email Address
+            </label>
             <input
               type="email"
               required
               autoComplete="email"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300
-                         text-[#2B2D42] placeholder-[#6B7280]
+              className="w-full px-3 py-2 rounded-lg border border-gray-300
+                         text-sm text-[#2B2D42]
                          focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]
-                         transition duration-300 hover:border-[#2A9D8F]"
+                         transition duration-300"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
@@ -97,60 +106,63 @@ const Register = () => {
 
           {/* Password */}
           <div>
-            <label className="block mb-1 text-[#6B7280] text-sm">Password</label>
+            <label className="block mb-1 text-xs text-[#6B7280]">
+              Password
+            </label>
             <input
               type="password"
               required
               autoComplete="new-password"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300
-                         text-[#2B2D42] placeholder-[#6B7280]
+              className="w-full px-3 py-2 rounded-lg border border-gray-300
+                         text-sm text-[#2B2D42]
                          focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]
-                         transition duration-300 hover:border-[#2A9D8F]"
+                         transition duration-300"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Create a password"
+              placeholder="Create password"
             />
           </div>
 
           {/* Confirm Password */}
           <div>
-            <label className="block mb-1 text-[#6B7280] text-sm">
+            <label className="block mb-1 text-xs text-[#6B7280]">
               Confirm Password
             </label>
             <input
               type="password"
               required
               autoComplete="new-password"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300
-                         text-[#2B2D42] placeholder-[#6B7280]
+              className="w-full px-3 py-2 rounded-lg border border-gray-300
+                         text-sm text-[#2B2D42]
                          focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]
-                         transition duration-300 hover:border-[#2A9D8F]"
+                         transition duration-300"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm your password"
+              placeholder="Confirm password"
             />
           </div>
 
-          {/* Register Button */}
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 rounded-xl font-semibold text-white
+            disabled={loading}
+            className="w-full py-2.5 mt-2 rounded-lg text-sm font-semibold text-white
                        bg-gradient-to-r from-[#3D5A80] to-[#2A9D8F]
                        hover:scale-[1.02] transition-all duration-300
-                       shadow-lg"
+                       shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
           >
-            Register
+            {loading ? "Sending OTP..." : "Register & Get OTP"}
           </button>
         </form>
 
         {/* Login Link */}
-        <p className="text-sm text-[#6B7280] text-center mt-6">
+        <p className="text-xs text-[#6B7280] text-center mt-5">
           Already have an account?{" "}
           <Link
             to="/login"
             className="text-[#3D5A80] font-semibold hover:text-[#2A9D8F] transition"
           >
-            Login here
+            Login
           </Link>
         </p>
       </div>
