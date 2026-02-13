@@ -19,8 +19,8 @@ const Dashboard = () => {
   // No subscription fallback
   if (!selectedPlan) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-50 via-white to-emerald-50">
-        <p className="text-lg font-medium text-gray-600">
+      <div className="flex justify-center items-center min-h-screen bg-[#F4F1EC]">
+        <p className="text-lg font-medium text-[#2B2D42]">
           No active subscription found.
         </p>
       </div>
@@ -28,32 +28,32 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-16 px-6 bg-gradient-to-br from-indigo-50 via-white to-emerald-50">
+    <div className="min-h-screen flex flex-col items-center py-16 px-6 bg-[#F4F1EC]">
 
       {/* Dashboard Card */}
-      <div className="shadow-xl rounded-2xl p-10 w-full max-w-3xl bg-white border border-gray-100">
+      <div className="shadow-xl rounded-2xl p-10 w-full max-w-3xl bg-white border border-[#E9C46A]">
 
         {/* Header */}
-        <h2 className="text-3xl font-bold mb-8 text-center text-indigo-700">
+        <h2 className="text-3xl font-bold mb-8 text-center text-[#3D5A80]">
           Subscription Dashboard
         </h2>
 
         {/* Plan Info */}
-        <div className="rounded-xl p-6 mb-8 shadow-sm bg-indigo-50 border border-indigo-100">
+        <div className="rounded-xl p-6 mb-8 shadow-sm bg-[#F4F1EC] border border-[#E9C46A]">
 
-          <h3 className="text-xl font-semibold mb-3 text-indigo-600">
+          <h3 className="text-xl font-semibold mb-3 text-[#3D5A80]">
             Current Plan
           </h3>
 
-          <p className="text-lg font-medium text-gray-800">
+          <p className="text-lg font-medium text-[#2B2D42]">
             {selectedPlan.name}
           </p>
 
-          <p className="text-gray-600">
+          <p className="text-[#2B2D42]">
             ₹{selectedPlan.price} / month
           </p>
 
-          <span className="inline-block mt-3 px-3 py-1 text-sm font-semibold rounded-full bg-emerald-100 text-emerald-700">
+          <span className="inline-block mt-3 px-4 py-1 text-sm font-semibold rounded-full bg-[#2A9D8F] text-white">
             Active
           </span>
 
@@ -62,7 +62,7 @@ const Dashboard = () => {
         {/* Features */}
         <div className="mb-8">
 
-          <h4 className="text-lg font-semibold mb-3 text-indigo-700">
+          <h4 className="text-lg font-semibold mb-3 text-[#3D5A80]">
             Included Features
           </h4>
 
@@ -70,9 +70,9 @@ const Dashboard = () => {
             {selectedPlan.features.map((feature, index) => (
               <li
                 key={index}
-                className="text-gray-600 flex items-center gap-2"
+                className="text-[#2B2D42] flex items-center gap-2"
               >
-                <span className="text-emerald-500">✓</span>
+                <span className="text-[#2A9D8F] font-bold">✓</span>
                 {feature}
               </li>
             ))}
@@ -81,18 +81,22 @@ const Dashboard = () => {
         </div>
 
         {/* Actions */}
-        <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
 
           <button
             onClick={handleUpgrade}
-            className="flex-1 py-3 rounded-lg font-semibold bg-emerald-500 text-white hover:bg-emerald-600 transition"
+            className="flex-1 py-3 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105"
+            style={{
+              background:
+                "linear-gradient(135deg, #3D5A80, #2A9D8F)",
+            }}
           >
             Upgrade Plan
           </button>
 
           <button
             onClick={handleLogout}
-            className="flex-1 py-3 rounded-lg font-semibold bg-gray-800 text-white hover:bg-black transition"
+            className="flex-1 py-3 rounded-lg font-semibold bg-[#2B2D42] text-white hover:opacity-90 transition"
           >
             Logout
           </button>
